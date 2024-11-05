@@ -5,6 +5,7 @@ Newtonsoft Json 3.2.1 · May 02, 2023 com.unity.nuget.newtonsoft-json
 NuGetForUnity une 03, 2024 com.github-glitchenzo.nugetforunity
 R3 https://github.com/Cysharp/R3
 Dotween
+
 Unity公式Plugin
 TextMeshPro
 Addressable
