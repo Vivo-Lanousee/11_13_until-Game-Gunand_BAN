@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// ’Êí‚ÌƒQ[ƒ€
-/// </summary>
-public class GameMain_Main : IMainGame
+public class GameMain_Pose : IMainGame
 {
-    public MainGameState Maingame => MainGameState.Main;
+    GameMainPlayer _player;
+    public MainGameState Maingame => MainGameState.Pose;
 
-    public GameMain_Main(GameMainPlayer player) { 
-        
+    public GameMain_Pose(GameMainPlayer player)
+    {
+        _player = player;
     }
+
     void IMainGame.Init()
     {
 
@@ -21,8 +21,10 @@ public class GameMain_Main : IMainGame
     }
     void IMainGame.Update()
     {
+        
     }
     void IMainGame.FixUpdate()
     {
+      
     }
 }

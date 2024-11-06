@@ -20,7 +20,7 @@ public interface IMainGame
 public enum MainGameState{
     InitTime,//データのロード時間
     Main,//通常のゲーム
-    Main_second,
+    Main_early,//加速（仮）
     Pose,//ポーズ
     DayEnd//ゲームの終了処理
 }
