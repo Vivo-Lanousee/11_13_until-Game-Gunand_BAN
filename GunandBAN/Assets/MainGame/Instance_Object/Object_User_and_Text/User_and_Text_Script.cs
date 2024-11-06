@@ -8,6 +8,7 @@ using UnityEngine;
 /// </summary>
 public class User_and_Text_Script : MonoBehaviour
 {
+
     [Header("ユーザーのコメント")]
     public TextMeshProUGUI CommentText;
 
