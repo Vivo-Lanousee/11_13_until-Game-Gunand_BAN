@@ -20,5 +20,6 @@ public interface IOpening
 public enum OpeningState
 {
     Title,//‰Šúó‘Ô
-    Option//İ’èó‘Ô
+    Option,//İ’èó‘Ô
+    NewGame,//
 }
