@@ -1,28 +1,25 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class Opening_Title : IOpening
+public class Opening_NewGame : IOpening
 {
-    private OpeningPlayer openingPlayer;
-    
-    public Opening_Title(OpeningPlayer player)
+    OpeningPlayer openingPlayer;
+
+    public Opening_NewGame(OpeningPlayer player)
     {
         openingPlayer = player;
     }
 
-    OpeningState IOpening.Opening => OpeningState.Title;
+    OpeningState IOpening.Opening => OpeningState.NewGame;
 
+    
     /// <summary>
-    /// OpeningÉVÅ[ÉìÇ÷OnClickìoò^
+    /// 
     /// </summary>
     void IOpening.Init()
     {
         openingPlayer.title.SetActive(true);
-        openingPlayer.NewGame.SetActive(false);
-        openingPlayer.Option.SetActive(false);
     }
     void IOpening.Exit()
     {
@@ -31,15 +28,11 @@ public class Opening_Title : IOpening
 
     void IOpening.FixUpdate()
     {
+
     }
 
 
     void IOpening.Update()
     {
-    }
-
-    public void OnClickEventInput()
-    {
-        
     }
 }

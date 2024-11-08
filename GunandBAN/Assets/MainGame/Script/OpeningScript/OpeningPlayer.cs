@@ -5,11 +5,15 @@ using UnityEngine.UI;
 
 public class OpeningPlayer : MonoBehaviour
 {
-    public GameObject Title;
-    public Button Continue;
-    public Button NewGame;
+    public GameObject title;
+    public GameObject NewGame;
+    public GameObject Option;
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+
+    }
+
     void Start()
     {
         
