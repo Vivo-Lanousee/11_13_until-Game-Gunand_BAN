@@ -10,19 +10,16 @@ public class OpeningPlayer : MonoBehaviour
     public GameObject Option;
     public GameObject NewMyAccount;
 
+    private OpeningContext OpeningContext;
+
     private void Awake()
     {
-
+        OpeningContext = new OpeningContext();
+        OpeningContext.MainGame_Init(this, OpeningState.Title);
     }
 
-    void Start()
-    {
-        
-    }
+    private void Update() => OpeningContext.Opening_currentState.Update();
+    private void FixedUpdate() => OpeningContext.Opening_currentState.FixUpdate();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

@@ -15,9 +15,7 @@ public class Opening_NewMyAccount : IOpening
     private OpeningPlayer openingPlayer;
     //InputFieldÇÃçwì«âèú
     IDisposable InputField_dispose;
-    InputField tes;
-    TMP_InputField tester;
-    
+
 
     public Opening_NewMyAccount(OpeningPlayer player)
     {
@@ -31,12 +29,18 @@ public class Opening_NewMyAccount : IOpening
     /// </summary>
     void IOpening.Init()
     {
+
         openingPlayer.title.SetActive(true);
         openingPlayer.NewGame.SetActive(false);
         openingPlayer.Option.SetActive(false);
 
         NewGame_NewMyAccount_Component test=openingPlayer.NewMyAccount.GetComponent<NewGame_NewMyAccount_Component>();
-        
+        test.Name_inputField.onValueChanged.AddListener(_ => {
+            if (_ == "")
+            {
+                test.Error_Message.text = "âΩÇ‡ì¸óÕÇ≥ÇÍÇƒÇ¢Ç‹ÇπÇÒ";
+            }
+        });
        
     }
     void IOpening.Exit()

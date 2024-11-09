@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class OpeningContext
 {
-    public IOpening OpeningGame_currentState;
-    public IOpening OpeningGame_beforeState;
+    public IOpening Opening_currentState;
+    public IOpening Opening_beforeState;
 
     public Dictionary<OpeningState, IOpening> StatePairTable;
 
@@ -21,6 +21,7 @@ public class OpeningContext
                 {OpeningState.Title, new Opening_Title(player)},
                 {OpeningState.Option,new Opening_Option(player)},
                 {OpeningState.NewGame,new Opening_NewGame(player)},
+                {OpeningState.NewMyAccount,new Opening_NewMyAccount(player)},
                 };
         StatePairTable = InitTable;
 
@@ -34,10 +35,10 @@ public class OpeningContext
     /// <param name="mainGameState"></param>
     public void Opening_ChangeState(OpeningState mainGameState)
     {
-        OpeningGame_beforeState = OpeningGame_currentState;
-        OpeningGame_currentState=StatePairTable[mainGameState];
+        Opening_beforeState = Opening_currentState;
+        Opening_currentState=StatePairTable[mainGameState];
 
-        OpeningGame_beforeState?.Exit();
-        OpeningGame_currentState.Init();
+        Opening_beforeState?.Exit();
+        Opening_currentState.Init();
     }
 }
