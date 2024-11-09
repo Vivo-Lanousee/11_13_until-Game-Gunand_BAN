@@ -22,4 +22,5 @@ public enum OpeningState
     Title,//初期状態
     Option,//設定状態
     NewGame,//
+    NewMyAccount,//アカウント作成画面
 }

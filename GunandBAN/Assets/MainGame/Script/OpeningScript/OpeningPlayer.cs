@@ -8,6 +8,7 @@ public class OpeningPlayer : MonoBehaviour
     public GameObject title;
     public GameObject NewGame;
     public GameObject Option;
+    public GameObject NewMyAccount;
 
     private void Awake()
     {
