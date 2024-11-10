@@ -4,7 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/MainGame/Scenes/Opening_Scene.unity
+    guid: 6ce3b35a2fc8f984ea5478ae9507d93f
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: ba05de43de9ec8f479cd84049827e6d8, type: 2}
   m_UseUCBPForAssetBundles: 0

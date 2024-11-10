@@ -1,15 +1,17 @@
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+
 /// <summary>
-/// PopUpWindowÇÃComponentäiî[ópÇ…çÏÇ¡ÇΩÇ‡ÇÃ
+/// PopUpWindow_opetionSelectÇÃComponentäiî[ópÇ…çÏÇ¡ÇΩÇ‡ÇÃ
 /// </summary>
-public class PopUpWindow : MonoBehaviour
+public class PopUpWindow_optionSelect : MonoBehaviour
 {
     public TextMeshProUGUI popuptext;
-    public Button button;
+    public Button ok;
+    public Button cancel;
 
     public AsyncOperationHandle delete;
     private void OnDestroy()

@@ -13,8 +13,8 @@ public class OpeningContext
     /// ‰Šú‰»
     /// </summary>
     /// <param name="player"></param>
-    /// <param name="MainInit"></param>
-    public void MainGame_Init(OpeningPlayer player, OpeningState MainInit) 
+    /// <param name="OpeningInit"></param>
+    public void Opening_Init(OpeningPlayer player, OpeningState OpeningInit) 
     {
         Dictionary<OpeningState, IOpening> InitTable
         = new(){
@@ -26,17 +26,17 @@ public class OpeningContext
         StatePairTable = InitTable;
 
         //‰Šú‰»
-        Opening_ChangeState(MainInit);
+        Opening_ChangeState(OpeningInit);
     }
 
     /// <summary>
     /// ó‘Ô‘JˆÚ‚³‚¹‚é‚½‚ß‚Ì‚à‚Ì
     /// </summary>
-    /// <param name="mainGameState"></param>
-    public void Opening_ChangeState(OpeningState mainGameState)
+    /// <param name="OpeningState"></param>
+    public void Opening_ChangeState(OpeningState OpeningState)
     {
         Opening_beforeState = Opening_currentState;
-        Opening_currentState=StatePairTable[mainGameState];
+        Opening_currentState=StatePairTable[OpeningState];
 
         Opening_beforeState?.Exit();
         Opening_currentState.Init();
