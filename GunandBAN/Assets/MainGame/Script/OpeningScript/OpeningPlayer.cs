@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class OpeningPlayer : MonoBehaviour
 {
-    public GameObject title;
-    public GameObject NewGame;
+    public GameObject Title;
+    public GameObject NewGamePopUp;
     public GameObject Option;
     public GameObject NewMyAccount;
 
@@ -15,11 +15,17 @@ public class OpeningPlayer : MonoBehaviour
     private void Awake()
     {
         OpeningContext = new OpeningContext();
-        OpeningContext.Opening_Init(this, OpeningState.NewMyAccount);
+        OpeningContext.Opening_Init(this, OpeningState.Title);
     }
 
-    private void Update() => OpeningContext.Opening_currentState.Update();
-    private void FixedUpdate() => OpeningContext.Opening_currentState.FixUpdate();
+    //private void Update() => OpeningContext.Opening_currentState.Update();
+    //private void FixedUpdate() => OpeningContext.Opening_currentState.FixUpdate();
+
+
+    public void title() => OpeningContext.Opening_ChangeState(OpeningState.Title);
+    public void option() => OpeningContext.Opening_ChangeState(OpeningState.Option);
+    public void newgame_popup() => OpeningContext.Opening_ChangeState(OpeningState.NewGamePopUp);
+    public void newmyaccount() => OpeningContext.Opening_ChangeState(OpeningState.NewMyAccount);
 
 
 }
@@ -30,6 +36,6 @@ public enum OpeningState
 {
     Title,//初期状態
     Option,//設定状態
-    NewGame,//ゲームデータ初期化画面
+    NewGamePopUp,//ゲームデータ初期化画面
     NewMyAccount,//アカウント作成画面
 }

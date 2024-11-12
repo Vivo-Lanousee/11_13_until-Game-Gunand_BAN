@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 今回別にそんなに重要じゃないと思うので仮置き。
+/// </summary>
 public class Opening_Option : IOpening
 {
     private OpeningPlayer openingPlayer;
@@ -18,11 +21,10 @@ public class Opening_Option : IOpening
     /// </summary>
     void IOpening.Init()
     {
-        openingPlayer.title.SetActive(true);
+        openingPlayer.title();
     }
     void IOpening.Exit()
     {
-        openingPlayer.title.SetActive(false);
     }
 
     void IOpening.FixUpdate()

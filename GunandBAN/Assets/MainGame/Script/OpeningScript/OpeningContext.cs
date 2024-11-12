@@ -20,7 +20,7 @@ public class OpeningContext
         = new(){
                 {OpeningState.Title, new Opening_Title(player)},
                 {OpeningState.Option,new Opening_Option(player)},
-                {OpeningState.NewGame,new Opening_NewGame(player)},
+                {OpeningState.NewGamePopUp,new Opening_NewGamePopUp(player)},
                 {OpeningState.NewMyAccount,new Opening_NewMyAccount(player)},
                 };
         StatePairTable = InitTable;

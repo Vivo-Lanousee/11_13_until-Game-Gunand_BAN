@@ -16,7 +16,7 @@ public class GameInitializer : MonoBehaviour
     {
         Debug.Log("ゲーム開始");
         //ゲーム開始
-        GameManager.Instance();
-        
+        GameManager gameManager=GameManager.Instance();
+        gameManager.PlayerDataDownLoad();
     }
 }

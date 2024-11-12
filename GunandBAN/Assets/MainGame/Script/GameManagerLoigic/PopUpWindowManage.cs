@@ -64,13 +64,15 @@ public class PopUpWindowManage : Singleton<PopUpWindowManage>
 
                 popupwindow_optionselect.popuptext.text = Text;
 
-                //実際の処理は関数第一引数の時に指定するものとする
+                //実際の処理は関数第一引数の時に指定するものとする。決定
                 popupwindow_optionselect.ok.onClick.AddListener(() => { 
                     action();
+                    //ポップアップ消去
                     Destroy(PopUp_Select);
                     Addressables.Release(popupwindow_optionselect.delete);
                 }) ;
-
+                
+                //キャンセル。ポップアップ消去
                 popupwindow_optionselect.cancel.onClick.AddListener(() => {
                     Destroy(PopUp_Select);
                     Addressables.Release(popupwindow_optionselect.delete);

@@ -1565,7 +1565,7 @@ RectTransform:
   m_Father: {fileID: 2008550351}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1933,8 +1933,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Continue_button: {fileID: 264210792}
   NewGame_button: {fileID: 1555583667}
-  Option_button: {fileID: 0}
-  Credit_button: {fileID: 0}
+  Option_button: {fileID: 566238816}
+  Credit_button: {fileID: 1871101467}
 --- !u!1 &705636849
 GameObject:
   m_ObjectHideFlags: 0
@@ -1945,7 +1945,6 @@ GameObject:
   m_Component:
   - component: {fileID: 705636851}
   - component: {fileID: 705636850}
-  - component: {fileID: 705636852}
   m_Layer: 0
   m_Name: OpeningPlayerManage
   m_TagString: Untagged
@@ -1965,8 +1964,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efb8f1833e069f143927ebaa058f68b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: {fileID: 640615408}
-  NewGame: {fileID: 1340098754}
+  Title: {fileID: 640615408}
+  NewGamePopUp: {fileID: 1340098754}
   Option: {fileID: 98467142}
   NewMyAccount: {fileID: 1105230348}
 --- !u!4 &705636851
@@ -1984,21 +1983,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &705636852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 705636849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f30d770f2bc56c4aac0ac5fdbdf4b6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 738031512}
-  text_percent: {fileID: 291781472}
-  myButton: {fileID: 1861432615}
 --- !u!1 &723018286
 GameObject:
   m_ObjectHideFlags: 0
@@ -2923,7 +2907,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1105230349
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3087,7 +3071,7 @@ RectTransform:
   m_Father: {fileID: 948662034}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3446,13 +3430,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1340098755}
+  - component: {fileID: 1340098756}
   m_Layer: 5
   m_Name: NewGame_PopUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1340098755
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3481,6 +3466,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1340098756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340098754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db29c4703b3baf24993516051150ec23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 738031512}
+  text_percent: {fileID: 291781472}
+  Yes: {fileID: 1861432615}
+  Cancel: {fileID: 935864748}
 --- !u!1 &1555583665
 GameObject:
   m_ObjectHideFlags: 0

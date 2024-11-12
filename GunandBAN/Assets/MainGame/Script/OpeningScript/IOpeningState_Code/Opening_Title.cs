@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,19 +21,24 @@ public class Opening_Title : IOpening
     /// </summary>
     void IOpening.Init()
     {
-        openingPlayer.title.SetActive(true);
-        openingPlayer.NewGame.SetActive(false);
+        OnClickEventInput();
+        AllButtonOff();
+        AllButtonOn();
+
+        openingPlayer.Title.SetActive(true);
+        openingPlayer.NewGamePopUp.SetActive(false);
         openingPlayer.Option.SetActive(false);
+        openingPlayer.NewGamePopUp.SetActive(false);
     }
     void IOpening.Exit()
     {
-        openingPlayer.title.SetActive(false);
+        openingPlayer.Title.SetActive(false);
+        AllButtonOff();
     }
 
     void IOpening.FixUpdate()
     {
     }
-
 
     void IOpening.Update()
     {
@@ -40,6 +46,44 @@ public class Opening_Title : IOpening
 
     public void OnClickEventInput()
     {
+        Title_Component title=openingPlayer.Title.GetComponent<Title_Component>();
+
+        //OnClick解除
+        title.Continue_button.onClick.RemoveAllListeners();
+        title.NewGame_button.onClick.RemoveAllListeners();
+        title.Option_button.onClick.RemoveAllListeners();
+        title.Credit_button.onClick.RemoveAllListeners();
+
+        Debug.Log("test");
+        //イベント付け
+        title.Continue_button.onClick.AddListener(() => { 
+            
+        });
+        title.NewGame_button.onClick.AddListener(() => { openingPlayer.newgame_popup(); });
+        title.Option_button.onClick.AddListener(() => { openingPlayer.option(); });
+        title.Credit_button.onClick.AddListener(() => { });
+    }
+
+    private void AllButtonOn()
+    {
+        Title_Component title = openingPlayer.Title.GetComponent<Title_Component>();
         
+        GameManager gameManager=GameManager.Instance();
+        gameManager.PlayerDataDownLoad();
+        if (gameManager.Player.PlayerName!="") {
+            title.Continue_button.interactable = true;
+        }
+        title.NewGame_button.interactable = true;
+        title.Option_button.interactable = true;
+        title.Credit_button.interactable = true;
+    }
+    private void AllButtonOff()
+    {
+        Title_Component title = openingPlayer.Title.GetComponent<Title_Component>();
+
+        title.Continue_button.interactable = false;
+        title.NewGame_button.interactable = false;
+        title.Option_button.interactable = false;
+        title.Credit_button.interactable=false;
     }
 }
