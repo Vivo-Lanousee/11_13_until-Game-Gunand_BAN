@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
 using Newtonsoft.Json;
+using System.IO;
 
 /// <summary>
 /// シナリオのロード用。
@@ -14,41 +11,37 @@ public class ScenarioTextManager : Singleton<ScenarioTextManager>
     /// シナリオ内容を挿入するリスト
     /// </summary>
     public ScenarioText_Component[] scenarioText;
+
+    public ScenarioText_Component[] TrueText;
+    public ScenarioText_Component[] FalseText;
+
     /// <summary>
     /// 現在のテキスト番号
     /// </summary>
     public int TextNum = 0;
 
+
     public GameObject TextPrefab;
 
-
+    private string path = Application.streamingAssetsPath+"/Scenario/";
+    
     /// <summary>
-    /// ロードの解放用-シナリオメタデータの場合
+    /// 
     /// </summary>
-    AsyncOperationHandle MetaScenariohandle;
-    /// <summary>
-    /// ロードの解放用-テキストデータの場合
-    /// </summary>
-    AsyncOperationHandle Texthandle;
-    public void ScenarioInit(string TextPath)
+    /// <param name="TextPath"></param>
+    public void ScenarioInitLoad(string TextPath)
     {
         TextNum = 0;
-        Addressables.LoadAssetAsync<TextAsset>(TextPath).Completed += _ =>
-        {
-            if (_.Result== null){
-                return;
-            }
-            Texthandle = _;
-            TextAsset a=_.Result;
-            string Text=a.ToString();
-            scenarioText=JsonConvert.DeserializeObject<ScenarioText_Component[]>(Text);
-        };
+        string ScenarioPath=path + TextPath + ".json";
+        
+        StreamReader sr = new StreamReader(ScenarioPath);
+        string data=sr.ReadToEnd();
+        scenarioText=JsonConvert.DeserializeObject<ScenarioText_Component[]>(data);
     }
 
-    public void Prefab()
-    {
-
-    }
+    /// <summary>
+    /// 次の文字機能
+    /// </summary>
     public void NextScenario()
     {
         //分岐処理
@@ -56,20 +49,8 @@ public class ScenarioTextManager : Singleton<ScenarioTextManager>
         {
             TextNum = 0;
             //分岐シナリオを挿入する
-            scenarioText = scenarioText[TextNum].branch_scenario_one;
-            
+            scenarioText = scenarioText[TextNum].branch_scenario_true;
             
         }
-    }
-    /// <summary>
-    /// メモリをリリースする。
-    /// </summary>
-    private void MemoryRelease()
-    {
-        Addressables.Release(Texthandle);
-    }
-    private void OnDestroy()
-    {
-        
     }
 }

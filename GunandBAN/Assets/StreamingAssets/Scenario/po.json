@@ -1,0 +1,67 @@
+[
+  {
+    "Id": 0,
+    "Name": "テスト",
+    "Text": "テス",
+    "EventName": "Null",
+    "branch": "false",
+    "branch_scenario_true": [],
+    "branch_scenario_false": []
+  },
+  {
+    "Id": 1,
+    "Name": "テスト",
+    "Text": "テス",
+    "EventName": "Null",
+    "branch": "false",
+    "branch_scenario_true": [],
+    "branch_scenario_false": []
+  },
+  {
+    "Id": 2,
+    "Name": "選択肢",
+    "Text": "テス",
+    "EventName": "Null",
+    "branch": "true",
+    "branch_scenario_true": [
+      {
+        "Id": 0,
+        "Name": "true",
+        "Text": "true",
+        "EventName": "Null",
+        "branch": "false",
+        "branch_scenario_true": [],
+        "branch_scenario_false": []
+      },
+      {
+        "Id": 1,
+        "Name": "true",
+        "Text": "true2",
+        "EventName": "Null",
+        "branch": "false",
+        "branch_scenario_true": [],
+        "branch_scenario_false": []
+      }
+    ],
+    "branch_scenario_false": [
+      {
+        "Id": 0,
+        "Name": "false",
+        "Text": "false",
+        "EventName": "Null",
+        "branch": "false",
+        "branch_scenario_true": [],
+        "branch_scenario_false": []
+      },
+      {
+        "Id": 1,
+        "Name": "false",
+        "Text": "false2",
+        "EventName": "Null",
+        "branch": "false",
+        "branch_scenario_true": [],
+        "branch_scenario_false": []
+      }
+    ]
+  }
+]

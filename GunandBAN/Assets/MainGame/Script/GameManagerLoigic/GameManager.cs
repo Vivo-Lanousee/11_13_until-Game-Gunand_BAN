@@ -67,4 +67,25 @@ public class GameManager : Singleton<GameManager>
         PlayerDataComponent playerdata = JsonConvert.DeserializeObject<PlayerDataComponent>(data);
         Player = playerdata;
     }
+
+    /// <summary>
+    /// セーブ機能
+    /// </summary>
+    public void PlayerSave()
+    {
+        using (StreamWriter streamWriter = new StreamWriter(Application.streamingAssetsPath + playerdatapath, false, System.Text.Encoding.UTF8))
+        {
+            var push = JsonConvert.SerializeObject(Player);
+            streamWriter.Write(push);
+        }
+    }
+
+    /// <summary>
+    /// ゲーム終了時オートセーブ（これを使用したバグも想定されるため注意）
+    /// </summary>
+    private void OnApplicationQuit()
+    {
+        Debug.Log("Check OnApplicationQuit");
+        PlayerSave();
+    }
 }

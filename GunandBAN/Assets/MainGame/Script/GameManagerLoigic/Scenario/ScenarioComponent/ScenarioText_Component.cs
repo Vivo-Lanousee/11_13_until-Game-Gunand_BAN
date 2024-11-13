@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 /// <summary>
 /// シナリオを流す必要な変数
 /// </summary>
+[Serializable]
 public class ScenarioText_Component
 {
     public int Id;
@@ -19,6 +19,6 @@ public class ScenarioText_Component
     /// <summary>
     /// 分岐在り時に使うコンポーネント。普段は使わない。
     /// </summary>
-    public ScenarioText_Component[] branch_scenario_one;
-    public ScenarioText_Component[] branch_scenario_two;
+    public ScenarioText_Component[] branch_scenario_true;
+    public ScenarioText_Component[] branch_scenario_false;
 }

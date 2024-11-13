@@ -32,6 +32,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1d677cfc22cc0c54f84c781907ae20aa
+    m_Address: Assets/MainGame/Script/Instance_Object/ScenarioPrefab/MessageWindow.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 28a7acfeea507ff40b2a436f1acc068c, type: 2}
   m_SchemaSet:
