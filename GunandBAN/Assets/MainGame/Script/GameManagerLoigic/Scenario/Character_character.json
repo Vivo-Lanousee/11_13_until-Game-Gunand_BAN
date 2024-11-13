@@ -1,0 +1,20 @@
+[
+    {
+        "age": 1,
+        "birthday": "t",
+        "gender": "mail",
+        "id": 14,
+        "name": "テスト",
+        "picture": "img/167363363_o11.png",
+        "setting": "a"
+    },
+    {
+        "age": 1,
+        "birthday": "11月11日",
+        "gender": "a",
+        "id": 15,
+        "name": "test",
+        "picture": "img/image.png",
+        "setting": "テスト用のキャラクターです"
+    }
+]

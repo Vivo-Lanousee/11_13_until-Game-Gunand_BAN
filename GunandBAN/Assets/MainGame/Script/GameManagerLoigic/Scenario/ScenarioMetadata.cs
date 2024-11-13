@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class ScenarioMetadata
 {
-    public int Id;
-    public string ScenarioName;
-    public string Addressable_Path;
+    public int created_at;
+    public string id;
+    public string table_name;
 }
