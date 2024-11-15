@@ -12,6 +12,9 @@ public class MapRandomGenerate : MonoBehaviour
     [SerializeField]
     private GameObject TileC;
     [SerializeField]
+    private GameObject TileD;
+
+    [SerializeField]
     public GameObject Boad;
 
 
@@ -34,7 +37,9 @@ public class MapRandomGenerate : MonoBehaviour
         }).AddTo(this);
     }
 
-    // Updateは毎フレーム呼ばれる
+    /// <summary>
+    /// マップの大きさとか編集
+    /// </summary>
     void Update()
     {
         // 右クリックでマウス移動によるボード移動
@@ -61,6 +66,10 @@ public class MapRandomGenerate : MonoBehaviour
             // 右クリックを離したらtsをfalseにリセット
             ts.Value = false;
         }
+
+        RectTransform rect = Boad.GetComponent<RectTransform>();
+        float wh = Input.GetAxis("Mouse ScrollWheel");
+        rect.localScale += new Vector3(wh, wh, 1);
     }
 
 

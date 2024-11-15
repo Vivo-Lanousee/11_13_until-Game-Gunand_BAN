@@ -1,16 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class MapGenerate : MonoBehaviour
+using UnityEngine.UI;
+public class Srpg_player : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject Srpg_Window;
+    public Button ResetUI;
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
