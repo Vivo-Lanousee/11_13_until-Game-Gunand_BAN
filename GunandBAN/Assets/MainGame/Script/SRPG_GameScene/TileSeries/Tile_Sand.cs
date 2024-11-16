@@ -19,8 +19,8 @@ public class Tile_Sand : MonoBehaviour, IMapTileComponent
 
     bool IMapTileComponent.IsLocked => false;
     public string TileName => "Sand";
-    int IMapTileComponent.AC => 0;
-    int IMapTileComponent.EV => 0;
+    int IMapTileComponent.AC => 10;
+    int IMapTileComponent.EV => 20;
 
     IBuff IMapTileComponent.buff { get; }
 }
