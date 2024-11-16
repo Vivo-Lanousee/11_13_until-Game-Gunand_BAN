@@ -13,4 +13,8 @@ public class PlayerDataComponent
     public string Chapter;
     public int Level;
     public int UserExp;
+    /// <summary>
+    /// SRPG‚ÌƒQ[ƒ€‚Ì“ïˆÕ“x‚ÌãŒÀ
+    /// </summary>
+    public int SRPGGameLevel;
 }

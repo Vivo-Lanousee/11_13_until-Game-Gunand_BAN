@@ -15,7 +15,9 @@ public interface IMapTileComponent
     /// 移動コスト
     /// </summary>
      public int Cost { get;}
-
+    
+    //移動不可かどうか
+    public bool IsLocked { get; }
     /// <summary>
     /// 命中値ボーナス
     /// </summary>

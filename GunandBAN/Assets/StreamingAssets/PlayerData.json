@@ -1,1 +1,7 @@
-﻿{"PlayerName":"aa","Chapter":"","Level":1,"UserExp":0}
+﻿{
+  "PlayerName": "ああ",
+  "Chapter": "NewGame",
+  "Level": 1,
+  "UserExp": 0,
+  "SRPGGameLevel": 1
+}

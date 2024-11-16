@@ -2,17 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tile_Sand : MonoBehaviour
+/// <summary>
+/// 砂のマップデータ。こちらですべて中身を記載している。
+/// 生成後、キャラクターがデータを必要になったときに取得するためにインターフェースを使用している
+/// </summary>
+public class Tile_Sand : MonoBehaviour, IMapTileComponent
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    /// <summary>
+    /// キャラクター⇒最初から参照せず、逐次参照する
+    /// </summary>
+    public Srpg_player Character;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    IBuff buff;
+    
+    int IMapTileComponent.Cost => 3;
+
+    bool IMapTileComponent.IsLocked => false;
+    public string TileName => "Sand";
+    int IMapTileComponent.AC => 0;
+    int IMapTileComponent.EV => 0;
+
+    IBuff IMapTileComponent.buff { get; }
 }

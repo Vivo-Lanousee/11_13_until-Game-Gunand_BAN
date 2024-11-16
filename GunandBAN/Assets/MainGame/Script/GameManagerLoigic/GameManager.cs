@@ -22,7 +22,9 @@ public class GameManager : Singleton<GameManager>
    public void UserDataInit()
     {
         PlayerDataComponent playerDataInit = new PlayerDataComponent() { 
-            PlayerName = "",Chapter ="NewGame",Level=1,UserExp=0};
+            PlayerName = "",Chapter ="NewGame",Level=1,UserExp=0,
+            SRPGGameLevel=1
+        };
 
         var player=JsonConvert.SerializeObject(playerDataInit);
 
