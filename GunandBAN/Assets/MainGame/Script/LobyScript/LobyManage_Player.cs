@@ -19,3 +19,10 @@ public class LobyManage_Player : MonoBehaviour
         Name.text = gameManager.Player.PlayerName;
     }
 }
+
+public enum LobyState
+{
+    Main,
+    Setting,
+    SelectGame
+}

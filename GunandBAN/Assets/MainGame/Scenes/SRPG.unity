@@ -1350,6 +1350,7 @@ MonoBehaviour:
   TileB: {fileID: 0}
   TileC: {fileID: 0}
   TileD: {fileID: 0}
+  A_per: 60
   Boad: {fileID: 97122429}
 --- !u!114 &1280263310
 MonoBehaviour:

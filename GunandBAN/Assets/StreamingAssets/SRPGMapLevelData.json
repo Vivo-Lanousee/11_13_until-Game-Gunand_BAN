@@ -11,13 +11,14 @@
     "TileD": 15
   },
   "Level_Two": {
-      "Enemy": 2,
-      "Ally": 1,
-      "MaxTile": 100,
-      "X": 10,
-      "Y": 10,
-      "TileA": 60,
-      "TileB": 10,
-      "TileC": 15,
-      "TileD": 15
+    "Enemy": 2,
+    "Ally": 1,
+    "MaxTile": 100,
+    "X": 10,
+    "Y": 10,
+    "TileA": 60,
+    "TileB": 10,
+    "TileC": 15,
+    "TileD": 15
   }
+}
