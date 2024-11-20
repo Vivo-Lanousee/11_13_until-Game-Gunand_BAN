@@ -10,10 +10,4 @@ public class test : MonoBehaviour
         ScenarioTextManager te=ScenarioTextManager.Instance();
         te.ScenarioInitLoad("po");
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

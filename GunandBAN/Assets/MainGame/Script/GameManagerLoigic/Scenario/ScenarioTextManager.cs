@@ -2,6 +2,8 @@ using UnityEngine;
 using Newtonsoft.Json;
 using System.IO;
 using UnityEngine.AddressableAssets;
+using System;
+using R3;
 /// <summary>
 /// シナリオのロードと生成用
 /// </summary>
@@ -24,6 +26,10 @@ public class ScenarioTextManager : Singleton<ScenarioTextManager>
     /// シナリオを表示する為のプレハブ
     /// </summary>
     public GameObject TextPrefab;
+    /// <summary>
+    /// Windowの子オブジェクト
+    /// </summary>
+    public MessageWindow_component messageWindow_Component;
 
     /// <summary>
     /// シナリオまでのパス
@@ -34,7 +40,26 @@ public class ScenarioTextManager : Singleton<ScenarioTextManager>
     /// </summary>
     private string Character_path = Application.streamingAssetsPath + "/CharacterSprite/";
 
-    
+    /// <summary>
+    /// 文字送りのObserver
+    /// </summary>
+    IDisposable disposable;
+    /// <summary>
+    /// シナリオシーンスタート。
+    /// 第一引数はシナリオの名前
+    /// 第二引数は親オブジェクト
+    /// </summary>
+    public void Scenario_Start(string TextPath,GameObject Parent)
+    {
+        ScenarioInitLoad(TextPath);
+        ScenarioInstantiate(Parent);
+
+        disposable=Observable.EveryUpdate()
+            .Where(_ => Input.GetKeyUp(KeyCode.Escape))
+            .Subscribe(_ => { Debug.Log("test"); }).AddTo(this);
+    }
+
+
     /// <summary>
     /// シナリオデータを読み込む。引数はシナリオの名前のみで良い
     /// </summary>
@@ -62,6 +87,8 @@ public class ScenarioTextManager : Singleton<ScenarioTextManager>
             }
             TextPrefab=Instantiate(_.Result);
             TextPrefab.transform.SetParent(Parent.transform, false);
+
+            messageWindow_Component=TextPrefab.GetComponent<MessageWindow_component>();
         };
     }
 
