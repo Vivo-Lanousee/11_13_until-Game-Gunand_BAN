@@ -18,5 +18,7 @@ public class GameInitializer : MonoBehaviour
         //ƒQ[ƒ€ŠJn
         GameManager gameManager=GameManager.Instance();
         gameManager.PlayerDataDownLoad();
+
+        gameManager.CharacterChange(gameManager.Player.CharacterData);
     }
 }

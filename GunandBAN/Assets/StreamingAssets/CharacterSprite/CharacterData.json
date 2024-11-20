@@ -1,10 +1,14 @@
 {
   "A": {
-    "pattern1": "1",
-    "pattern2": "2"
+    "LobyTalk": [
+         "A_1",
+         "A_2"
+    ]
   },
   "B": {
-    "pattern1": "1",
-    "pattern2": "2"
+    "LobyTalk": [
+      "B_1",
+      "B_2"
+    ]
   }
 }

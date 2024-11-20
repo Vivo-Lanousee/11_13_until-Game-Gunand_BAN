@@ -1,0 +1,12 @@
+[
+  {
+    "CharacterName": "A",
+    "Character_Path": "A.json",
+    "CharacterData": "説明文？"
+  },
+  {
+    "CharacterName": "B",
+    "Character_Path": "B.json",
+    "CharacterData": "説明文"
+  }
+]

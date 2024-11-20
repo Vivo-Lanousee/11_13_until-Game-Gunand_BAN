@@ -17,4 +17,5 @@ public class PlayerDataComponent
     /// SRPG‚ÌƒQ[ƒ€‚Ì“ïˆÕ“x‚ÌãŒÀ
     /// </summary>
     public int SRPGGameLevel;
+    public string CharacterData;
 }
