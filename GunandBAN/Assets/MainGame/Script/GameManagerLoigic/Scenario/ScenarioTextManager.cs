@@ -1,9 +1,9 @@
 using UnityEngine;
 using Newtonsoft.Json;
 using System.IO;
-
+using UnityEngine.AddressableAssets;
 /// <summary>
-/// シナリオのロード用。
+/// シナリオのロードと生成用
 /// </summary>
 public class ScenarioTextManager : Singleton<ScenarioTextManager>
 {
@@ -20,23 +20,49 @@ public class ScenarioTextManager : Singleton<ScenarioTextManager>
     /// </summary>
     public int TextNum = 0;
 
-
+    /// <summary>
+    /// シナリオを表示する為のプレハブ
+    /// </summary>
     public GameObject TextPrefab;
 
-    private string path = Application.streamingAssetsPath+"/Scenario/";
+    /// <summary>
+    /// シナリオまでのパス
+    /// </summary>
+    private string Scenario_path = Application.streamingAssetsPath+"/Scenario/";
+    /// <summary>
+    /// キャラクター立ち絵のパス想定
+    /// </summary>
+    private string Character_path = Application.streamingAssetsPath + "/CharacterSprite/";
+
     
     /// <summary>
-    /// 
+    /// シナリオデータを読み込む。引数はシナリオの名前のみで良い
     /// </summary>
     /// <param name="TextPath"></param>
     public void ScenarioInitLoad(string TextPath)
     {
         TextNum = 0;
-        string ScenarioPath=path + TextPath + ".json";
+        string ScenarioPath=Scenario_path + TextPath + ".json";
         
         StreamReader sr = new StreamReader(ScenarioPath);
         string data=sr.ReadToEnd();
         scenarioText=JsonConvert.DeserializeObject<ScenarioText_Component[]>(data);
+    }
+
+    /// <summary>
+    /// シナリオのゲームオブジェクト生成-引数に親オブジェクトの指定
+    /// </summary>
+    public void ScenarioInstantiate(GameObject Parent)
+    {
+        Addressables.LoadAssetAsync<GameObject>("MessageWindow").Completed += _ =>
+        {
+            if(_.Result ==null)
+            {
+                return;
+            }
+            TextPrefab=Instantiate(_.Result);
+            TextPrefab.transform.SetParent(Parent.transform, false);
+        };
     }
 
     /// <summary>

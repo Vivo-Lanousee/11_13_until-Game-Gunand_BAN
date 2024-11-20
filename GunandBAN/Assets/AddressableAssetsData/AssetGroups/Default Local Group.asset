@@ -33,7 +33,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1d677cfc22cc0c54f84c781907ae20aa
-    m_Address: Assets/MainGame/Script/Instance_Object/ScenarioPrefab/MessageWindow.prefab
+    m_Address: MessageWindow
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
