@@ -7,6 +7,8 @@ using UnityEngine.UI;
 using Newtonsoft.Json;
 using System.IO;
 using Newtonsoft.Json.Linq;
+using System;
+using R3;
 
 /// <summary>
 /// Lobby画面のキャラクターが話すやつ（ソシャゲライクの案。）
@@ -25,16 +27,21 @@ public class CharacterTalk : MonoBehaviour,IPointerClickHandler
     [SerializeField]
     private Button B;
 
+    IDisposable m_Disposed;
+
+
     private void Awake()
     {
         A.onClick.AddListener(() => {
             GameManager gameManager = GameManager.Instance();
             gameManager.CharacterChange("A");
+
         });
         B.onClick.AddListener(() =>
         {
             GameManager gameManager = GameManager.Instance();
             gameManager.CharacterChange("B");
+            
         });
     }
 
@@ -47,10 +54,19 @@ public class CharacterTalk : MonoBehaviour,IPointerClickHandler
         GameManager gameManager = GameManager.Instance();
         if(gameManager.Player.CharacterData != null)
         {
+            m_Disposed?.Dispose();
+
             TalkUI.SetActive(true);
 
-            int a=Random.Range(0,gameManager.Character_Talk.Count);
+            int a= UnityEngine.Random.Range(0,gameManager.Character_Talk.Count);
             m_TextMeshPro.text = gameManager.Character_Talk[a];
+
+            //自動的に消える処理
+            m_Disposed=Observable.Timer(TimeSpan.FromSeconds(m_TextMeshPro.text.Length+5)).Subscribe(_ =>
+                {
+                    TalkUI.SetActive(false);
+                    Debug.Log("test");
+                });
         }
     }
 }

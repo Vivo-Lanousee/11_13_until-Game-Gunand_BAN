@@ -4,10 +4,9 @@ using UnityEngine;
 using System.IO;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Linq;
+using UnityEngine.AddressableAssets;
 
-/// <summary>
-/// 
-/// </summary>
 public class GameMains_StreamLogic : Singleton<GameMains_StreamLogic>
 {
     /// <summary>
@@ -17,6 +16,10 @@ public class GameMains_StreamLogic : Singleton<GameMains_StreamLogic>
 
     public List<UserData> UserList = new List<UserData>();
 
+    /// <summary>
+    /// ゲームのタブ情報
+    /// </summary>
+    public GameTab_Component gameTab_Component=null;
 
     /// <summary>
     /// Userを喋らせる時の基準
@@ -32,6 +35,16 @@ public class GameMains_StreamLogic : Singleton<GameMains_StreamLogic>
     /// </summary>
     public string current_Comment;
 
+    /// <summary>
+    /// 現在のユーザー数
+    /// </summary>
+    public int goodUser = 0;
+    public int badUser = 0;
+    /// <summary>
+    /// 今のイベントネーム
+    /// </summary>
+    public string current_EventName="";
+
 
     /// <summary>
     /// 初期化
@@ -41,8 +54,9 @@ public class GameMains_StreamLogic : Singleton<GameMains_StreamLogic>
     /// <param name_list="bad"></param>
     public void GameInit(int good,int bad)
     {
+        goodUser = good;
+        badUser = bad;
         current_UserDataNum = 0;
-
         name_list.Clear();
         #region 名前のリストを作成。
         StreamReader stream = new StreamReader(Application.streamingAssetsPath+"/NameList.json");
@@ -61,7 +75,9 @@ public class GameMains_StreamLogic : Singleton<GameMains_StreamLogic>
             UserList.Add(new UserData {
                 UserName = name_list[a],
                 Caluma=UnityEngine.Random.Range(71,101) ,
-                Comment_Log_List=new List<string>()});
+                Comment_Log_List=new List<string>(),
+                BAN_onoff = false
+            });
         }
         for (int i = 0;i < bad; i++)
         {
@@ -69,7 +85,8 @@ public class GameMains_StreamLogic : Singleton<GameMains_StreamLogic>
             UserList.Add(new UserData {
                 UserName = name_list[a],
                 Caluma = UnityEngine.Random.Range(0, 31),
-                Comment_Log_List = new List<string>()
+                Comment_Log_List = new List<string>(),
+                BAN_onoff=false
              });
         }
         #endregion
@@ -96,10 +113,42 @@ public class GameMains_StreamLogic : Singleton<GameMains_StreamLogic>
     }
 
     /// <summary>
+    /// 最後の順番になったとき、BANされた人間をリストから削除しておく
+    /// </summary>
+    public void RemoveBAN()
+    {
+        UserList = UserList.Where(userData => userData.BAN_onoff == false).ToList();
+    }
+
+    /// <summary>
+    /// 対応ユーザー
+    /// </summary>
+    public void OnBAN(int num)
+    {
+        UserList[num].BAN_onoff = true;
+        if (UserList[num].Caluma <= 50)
+        {
+            badUser -= 1;
+        }
+        else if (51 <= UserList[num].Caluma)
+        {
+            goodUser -= 1;
+        }
+    }
+
+    /// <summary>
     /// 1Userのコメントを抽出するスクリプト
     /// </summary>
     public void UserComment(string EventName)
     {
+        //最後になったら順番を0に戻す処理(BANしたものを全て削除）
+        if (UserList.Count <= current_UserDataNum)
+        {
+            current_UserDataNum = 0;
+            RemoveBAN();
+            Shuffle<UserData>(UserList);
+        }
+
         #region　善悪判定
         string Caluma = "Good";
         //50以下or51以上
@@ -125,13 +174,32 @@ public class GameMains_StreamLogic : Singleton<GameMains_StreamLogic>
         current_User = UserList[current_UserDataNum].UserName;
 
         current_UserDataNum ++;
+    }
 
-        //
-        if (UserList.Count <= current_UserDataNum)
+    /// <summary>
+    /// タブUIを生成、ダウンロード
+    /// </summary>
+    public void TabCreate(GameObject Parent)
+    {
+        Addressables.LoadAssetAsync<GameObject>("").Completed += _ =>
         {
-            current_UserDataNum = 0;
-        }
+            if(_.Result == null)
+            {
+                return;
+            }
+
+            GameObject tab=Instantiate(_.Result);
+            gameTab_Component=tab.GetComponent<GameTab_Component>();
+            gameTab_Component.delete = _;
+
+            tab.transform.SetParent(Parent.transform,false);
+        };
     }
 
 
+    //
+    public void CommentQuestion(GameObject Parent)
+    {
+
+    }
 }

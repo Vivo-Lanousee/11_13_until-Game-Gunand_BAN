@@ -42,7 +42,7 @@ public class PopUpWindowManage : Singleton<PopUpWindowManage>
     }
     /// <summary>
     /// 確認用ポップアップWindowを出す。
-    /// 第一引数には実行時の関数を
+    /// 第一引数には実行(Yes)時の関数を
     /// 第2引数にポップアップ内のテキスト。
     /// 第3引数は親オブジェクトを指定
     /// </summary>

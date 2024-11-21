@@ -21,4 +21,9 @@ public class UserData
     /// ƒRƒƒ“ƒg—š—ğ
     /// </summary>
     public List<string> Comment_Log_List;
+
+    /// <summary>
+    /// BAN‚·‚é‚Ì”»’è
+    /// </summary>
+    public bool BAN_onoff;
 }
