@@ -12,8 +12,8 @@ public class GameMainContext
     /// <summary>
     /// ‰Šú‰»
     /// </summary>
-    /// <param name="player"></param>
-    /// <param name="MainInit"></param>
+    /// <param name_list="player"></param>
+    /// <param name_list="MainInit"></param>
     public void MainGame_Init(GameMainPlayer player,MainGameState MainInit) 
     {
 
@@ -32,7 +32,7 @@ public class GameMainContext
     /// <summary>
     /// ó‘Ô‘JˆÚ‚³‚¹‚é‚½‚ß‚Ì‚à‚Ì
     /// </summary>
-    /// <param name="mainGameState"></param>
+    /// <param name_list="mainGameState"></param>
     public void MainGame_ChangeState(MainGameState mainGameState)
     {
         MainGame_beforeState = MainGame_currentState;

@@ -11,9 +11,6 @@ public class User_and_Text_Script : MonoBehaviour
     public TextMeshProUGUI CommentText;
 
 
-    /// <summary>
-    /// UserProfile結構悩ましいというか専用にスクリプト作ってもいいかも
-    /// </summary>
     public GameObject UserProfile;
 
 

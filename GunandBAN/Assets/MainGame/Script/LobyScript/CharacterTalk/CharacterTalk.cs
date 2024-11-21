@@ -41,7 +41,7 @@ public class CharacterTalk : MonoBehaviour,IPointerClickHandler
     /// <summary>
     /// ƒNƒŠƒbƒN‚Ìˆ—
     /// </summary>
-    /// <param name="pointerEventData"></param>
+    /// <param name_list="pointerEventData"></param>
     public void OnPointerClick(PointerEventData pointerEventData)
     {
         GameManager gameManager = GameManager.Instance();

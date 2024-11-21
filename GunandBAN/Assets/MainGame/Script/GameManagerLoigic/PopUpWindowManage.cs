@@ -46,8 +46,8 @@ public class PopUpWindowManage : Singleton<PopUpWindowManage>
     /// 第2引数にポップアップ内のテキスト。
     /// 第3引数は親オブジェクトを指定
     /// </summary>
-    /// <param name="Text"></param>
-    /// <param name="Parent"></param>
+    /// <param name_list="Text"></param>
+    /// <param name_list="Parent"></param>
     public void PopUp_Window_optionSelect_Instance(Action action,string Text, GameObject Parent)
     {
         Addressables.LoadAssetAsync<GameObject>("PopUpWindow_optionSelect").Completed

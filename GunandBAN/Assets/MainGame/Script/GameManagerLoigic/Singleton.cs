@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// MonoBehaviour‚ÌƒVƒ“ƒOƒ‹ƒgƒ“‰»
 /// </summary>
-/// <typeparam name="T"></typeparam>
+/// <typeparam name_list="T"></typeparam>
 public class Singleton<T> : MonoBehaviour where T : Singleton<T>
 {
     protected static T instance;

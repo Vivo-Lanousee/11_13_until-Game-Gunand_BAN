@@ -46,7 +46,7 @@ public class GameManager : Singleton<GameManager>
     /// <summary>
     /// 名前更新処理
     /// </summary>
-    /// <param name="UpdateName"></param>
+    /// <param name_list="UpdateName"></param>
     public void UserDataNameUpdate(string UpdateName) {
 
         PlayerDataComponent playerdata;
@@ -92,7 +92,7 @@ public class GameManager : Singleton<GameManager>
     /// <summary>
     /// キャラクターチェンジ機能
     /// </summary>
-    /// <param name="Character"></param>
+    /// <param name_list="Character"></param>
     public void CharacterChange(string Character)
     {
         //リセット

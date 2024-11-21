@@ -63,7 +63,7 @@ public class ScenarioTextManager : Singleton<ScenarioTextManager>
     /// <summary>
     /// シナリオデータを読み込む。引数はシナリオの名前のみで良い
     /// </summary>
-    /// <param name="TextPath"></param>
+    /// <param name_list="TextPath"></param>
     public void ScenarioInitLoad(string TextPath)
     {
         TextNum = 0;

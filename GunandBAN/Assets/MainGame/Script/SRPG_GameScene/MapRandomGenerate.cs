@@ -106,8 +106,8 @@ public class MapRandomGenerate : MonoBehaviour
     /// <summary>
     /// s”‚Æ—ñ”‚ÍŒˆ‚ß‚Ä‚¢‚È‚¢
     /// </summary>
-    /// <param name="data"></param>
-    /// <param name="data2"></param>
+    /// <param name_list="data"></param>
+    /// <param name_list="data2"></param>
     public void MapInstantiate(int data,int data2)
     {
         int FullNum = data * data2;

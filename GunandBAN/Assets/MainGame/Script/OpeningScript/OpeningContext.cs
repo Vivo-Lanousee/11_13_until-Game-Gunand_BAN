@@ -12,8 +12,8 @@ public class OpeningContext
     /// <summary>
     /// ‰Šú‰»
     /// </summary>
-    /// <param name="player"></param>
-    /// <param name="OpeningInit"></param>
+    /// <param name_list="player"></param>
+    /// <param name_list="OpeningInit"></param>
     public void Opening_Init(OpeningPlayer player, OpeningState OpeningInit) 
     {
         Dictionary<OpeningState, IOpening> InitTable
@@ -32,7 +32,7 @@ public class OpeningContext
     /// <summary>
     /// ó‘Ô‘JˆÚ‚³‚¹‚é‚½‚ß‚Ì‚à‚Ì
     /// </summary>
-    /// <param name="OpeningState"></param>
+    /// <param name_list="OpeningState"></param>
     public void Opening_ChangeState(OpeningState OpeningState)
     {
         Opening_beforeState = Opening_currentState;
