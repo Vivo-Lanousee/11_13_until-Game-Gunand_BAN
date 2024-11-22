@@ -5,10 +5,6 @@ using UnityEngine;
 
 public interface ITalkEvent
 {
-    /// <summary>
-    /// プレイヤー
-    /// </summary>
-    EarlyTalkManager EarlyTalkManager{ get; }
     void Init();
     /// <summary>
     /// ダメージのスクリプト想定

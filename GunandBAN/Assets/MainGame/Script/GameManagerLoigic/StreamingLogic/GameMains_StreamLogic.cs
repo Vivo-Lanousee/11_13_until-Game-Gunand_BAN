@@ -20,6 +20,10 @@ public class GameMains_StreamLogic : Singleton<GameMains_StreamLogic>
     /// ゲームのタブ情報
     /// </summary>
     public GameTab_Component gameTab_Component=null;
+    /// <summary>
+    /// BAN探索画面情報
+    /// </summary>
+    public Comment_InstanceComponent comment_InstanceComponent=null;
 
     /// <summary>
     /// Userを喋らせる時の基準
@@ -45,6 +49,8 @@ public class GameMains_StreamLogic : Singleton<GameMains_StreamLogic>
     /// </summary>
     public string current_EventName="";
 
+    public bool GameEnd=false;
+    public bool GameClear=false;
 
     /// <summary>
     /// 初期化
@@ -52,8 +58,10 @@ public class GameMains_StreamLogic : Singleton<GameMains_StreamLogic>
     /// </summary>
     /// <param name_list="good"></param>
     /// <param name_list="bad"></param>
-    public void GameInit(int good,int bad)
+    public void GameInit(int good,int bad,GameObject Parent)
     {
+        GameEnd = false;
+        GameClear = false;
         goodUser = good;
         badUser = bad;
         current_UserDataNum = 0;
@@ -93,6 +101,8 @@ public class GameMains_StreamLogic : Singleton<GameMains_StreamLogic>
 
         //順番シャッフル
         Shuffle<UserData>(UserList);
+
+        TabCreate(Parent);
     }
 
     /// <summary>
@@ -133,6 +143,21 @@ public class GameMains_StreamLogic : Singleton<GameMains_StreamLogic>
         else if (51 <= UserList[num].Caluma)
         {
             goodUser -= 1;
+        }
+        if (gameTab_Component!=null)
+        {
+            //UIを変更させる。
+            gameTab_Component.UI_Change();
+        }
+        //悪いユーザーが0人になったとき、クリアの判定をオンにする
+        if(badUser <= 0)
+        {
+            GameClear = true;
+        }
+        //もしUserが3人未満になった場合、ゲームを終了する。
+        if(goodUser +badUser <3)
+        {
+            GameEnd = true;
         }
     }
 
@@ -181,7 +206,7 @@ public class GameMains_StreamLogic : Singleton<GameMains_StreamLogic>
     /// </summary>
     public void TabCreate(GameObject Parent)
     {
-        Addressables.LoadAssetAsync<GameObject>("").Completed += _ =>
+        Addressables.LoadAssetAsync<GameObject>("GameTab").Completed += _ =>
         {
             if(_.Result == null)
             {
@@ -196,10 +221,30 @@ public class GameMains_StreamLogic : Singleton<GameMains_StreamLogic>
         };
     }
 
-
-    //
-    public void CommentQuestion(GameObject Parent)
+    /// <summary>
+    /// ユーザーのコメントを複数表示する為のUIを生成。
+    /// EventNameを指定しなければ生成しない。
+    /// </summary>
+    /// <param name="Parent"></param>
+    public void CommentQuestion(GameObject Parent,string EventName)
     {
+        //Eventの名前を設定
+        current_EventName = EventName;
 
+        if (GameEnd != true)
+        {
+            Addressables.LoadAssetAsync<GameObject>("BanQuestion").Completed += _ =>
+            {
+                if (_.Result == null)
+                {
+                    return;
+                }
+                GameObject tab = Instantiate(_.Result);
+                comment_InstanceComponent = tab.GetComponent<Comment_InstanceComponent>();
+                comment_InstanceComponent.delete = _;
+
+                tab.transform.SetParent(Parent.transform, false);
+            };
+        }
     }
 }

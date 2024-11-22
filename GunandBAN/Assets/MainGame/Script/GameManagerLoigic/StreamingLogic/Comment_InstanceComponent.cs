@@ -57,7 +57,7 @@ public class Comment_InstanceComponent : MonoBehaviour
     /// </summary>
     public void Start()
     {
-
+        Init();
     }
     /// <summary>
     /// ‰Šú‰»ˆ—

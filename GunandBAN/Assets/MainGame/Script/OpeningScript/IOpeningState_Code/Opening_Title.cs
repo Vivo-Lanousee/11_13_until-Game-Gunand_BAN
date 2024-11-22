@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Opening_Title : IOpening
@@ -56,9 +57,12 @@ public class Opening_Title : IOpening
 
         Debug.Log("test");
         //イベント付け
-        title.Continue_button.onClick.AddListener(() => { 
-            
+
+        //コンティニュー
+        title.Continue_button.onClick.AddListener(() => {
+            SceneManager.LoadScene("Lobby_Scene");
         });
+        //ニューゲーム
         title.NewGame_button.onClick.AddListener(() => { openingPlayer.newgame_popup(); });
         title.Option_button.onClick.AddListener(() => { openingPlayer.option(); });
         title.Credit_button.onClick.AddListener(() => { });
