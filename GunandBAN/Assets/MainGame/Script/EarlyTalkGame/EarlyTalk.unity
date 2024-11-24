@@ -303,8 +303,8 @@ MonoBehaviour:
   EventName: 
   GameOver: {fileID: 268430571}
   GameClear: {fileID: 946599972}
-  HP: 20
-  MaxHP: 20
+  HP: 100
+  MaxHP: 100
   HP_bar: {fileID: 544653965}
 --- !u!1 &268430571
 GameObject:

@@ -10,6 +10,9 @@ using UnityEngine;
 [Serializable]
 public class UserData
 {
+    //プライマリーキーとしての役割    
+    public int Id;
+
     public string UserName;
     /// <summary>
     /// 敵かどうかを示す値。0~100の範囲。

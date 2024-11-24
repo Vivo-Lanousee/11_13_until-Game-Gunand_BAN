@@ -119,26 +119,24 @@ public class EarlyTalkManager : MonoBehaviour
 
             currentEvent.Init();
 
+
+            messageWindow.True.onClick.RemoveAllListeners();
+            messageWindow.False.onClick.RemoveAllListeners();
             messageWindow.True.onClick.AddListener(() =>
             {
                 currentEvent.TrueEnd();
-
-                messageWindow.True.onClick.RemoveAllListeners();
-
                 One_Turn();
+                Debug.Log("test");
             });
 
             messageWindow.False.onClick.AddListener(() =>
             {
                 currentEvent.FalseEnd();
-
-                messageWindow.True.onClick.RemoveAllListeners();
-
                 One_Turn();
             });
 
             Event_Count++;
-            if (Event_Count % 3 == 0) {
+            if (Event_Count % 3 == 0&& Event_Count!=0) {
                 Debug.Log("Eventî≠ê∂");
 
                 game.CommentQuestion(gameObject, EventName);

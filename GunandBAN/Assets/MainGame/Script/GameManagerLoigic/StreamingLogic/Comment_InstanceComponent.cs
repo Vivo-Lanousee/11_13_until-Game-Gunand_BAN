@@ -46,7 +46,14 @@ public class Comment_InstanceComponent : MonoBehaviour
 
     public float RemitMax = 5;
     public float RemitCount=5;
-    
+
+    /// <summary>
+    /// 試してみたいことがある。
+    /// </summary>
+    public int A;
+    public int B;
+    public int C;
+
 
     IDisposable dispose;
 
@@ -68,13 +75,20 @@ public class Comment_InstanceComponent : MonoBehaviour
 
         #region 一人目
 
+        //外部から数値を取ってこないと、クリックした時の変数の値になってしまうのでバグってしまうので外部で一度格納する
+        int num_a = gameMains_StreamLogic.current_UserDataNum;
+        A = gameMains_StreamLogic.UserList[num_a].Id;
+
         //クリックした時、BANする
         button_one.onClick.AddListener(() =>
         {
-            gameMains_StreamLogic.OnBAN(gameMains_StreamLogic.current_UserDataNum);
+            gameMains_StreamLogic.OnBAN(num_a);
             dispose?.Dispose();
             Remove();
         });
+
+        /////今のままじゃなんか知らんけどインデックス番号がリセット以降もってこれない？！なんで？！
+
         //コメントの情報を持ってくる。
         //(生成したタイミングで別途、関数でイベントの名前を指定する事
         gameMains_StreamLogic.UserComment(gameMains_StreamLogic.current_EventName);
@@ -83,10 +97,12 @@ public class Comment_InstanceComponent : MonoBehaviour
         #endregion
 
         # region 2人目
+        int num_b = gameMains_StreamLogic.current_UserDataNum;
+        B= gameMains_StreamLogic.UserList[num_b].Id;
 
         button_two.onClick.AddListener(() =>
         {
-            gameMains_StreamLogic.OnBAN(gameMains_StreamLogic.current_UserDataNum);
+            gameMains_StreamLogic.OnBAN(num_b);
             dispose?.Dispose();
             Remove();
         });
@@ -98,9 +114,12 @@ public class Comment_InstanceComponent : MonoBehaviour
         #endregion
 
         #region 3人目
+        int num_c = gameMains_StreamLogic.current_UserDataNum;
+        C=gameMains_StreamLogic.UserList[num_c].Id;
+
         button_three.onClick.AddListener(() =>
         {
-            gameMains_StreamLogic.OnBAN(gameMains_StreamLogic.current_UserDataNum);
+            gameMains_StreamLogic.OnBAN(num_c);
             dispose?.Dispose();
             Remove();
         });
@@ -111,6 +130,7 @@ public class Comment_InstanceComponent : MonoBehaviour
         buttonText_three.text = gameMains_StreamLogic.current_Comment;
         #endregion
 
+        //ゲージ減少
         RemitCount = RemitMax;
         dispose = Observable.EveryUpdate().Subscribe(_ =>
         {

@@ -53,6 +53,11 @@ public class GameMains_StreamLogic : Singleton<GameMains_StreamLogic>
     public bool GameClear=false;
 
     /// <summary>
+    /// プライマリーキーを設定する時に使用
+    /// </summary>
+    public int NewPMId_Character=0;
+
+    /// <summary>
     /// 初期化
     /// 第一引数はGoodUser、第二引数にBad(Enemy)Userの人数
     /// </summary>
@@ -60,12 +65,16 @@ public class GameMains_StreamLogic : Singleton<GameMains_StreamLogic>
     /// <param name_list="bad"></param>
     public void GameInit(int good,int bad,GameObject Parent)
     {
+        #region データを全てリセット
         GameEnd = false;
         GameClear = false;
         goodUser = good;
         badUser = bad;
         current_UserDataNum = 0;
+        NewPMId_Character = 0;
         name_list.Clear();
+        #endregion
+
         #region 名前のリストを作成。
         StreamReader stream = new StreamReader(Application.streamingAssetsPath+"/NameList.json");
         string namedata=stream.ReadToEnd();
@@ -81,21 +90,26 @@ public class GameMains_StreamLogic : Singleton<GameMains_StreamLogic>
         for (int i = 0; i < good; i++) {
             int a = UnityEngine.Random.Range(0, name_list.Count);
             UserList.Add(new UserData {
+                Id = NewPMId_Character,
                 UserName = name_list[a],
                 Caluma=UnityEngine.Random.Range(71,101) ,
                 Comment_Log_List=new List<string>(),
                 BAN_onoff = false
             });
+            
+            NewPMId_Character++;
         }
         for (int i = 0;i < bad; i++)
         {
             int a = UnityEngine.Random.Range(0, name_list.Count);
             UserList.Add(new UserData {
+                Id = NewPMId_Character,
                 UserName = name_list[a],
                 Caluma = UnityEngine.Random.Range(0, 31),
                 Comment_Log_List = new List<string>(),
                 BAN_onoff=false
              });
+            NewPMId_Character++;
         }
         #endregion
 
@@ -135,7 +149,15 @@ public class GameMains_StreamLogic : Singleton<GameMains_StreamLogic>
     /// </summary>
     public void OnBAN(int num)
     {
+        //UserData user=(UserData)UserList.Where(userdata => userdata.Id == num);
+
+        //BANの判定をする時は全てIDで探す
+
+
+
+        //BANの判定をONにする
         UserList[num].BAN_onoff = true;
+
         if (UserList[num].Caluma <= 50)
         {
             badUser -= 1;
@@ -144,6 +166,7 @@ public class GameMains_StreamLogic : Singleton<GameMains_StreamLogic>
         {
             goodUser -= 1;
         }
+        //タブのUIを変更する
         if (gameTab_Component!=null)
         {
             //UIを変更させる。
@@ -193,8 +216,11 @@ public class GameMains_StreamLogic : Singleton<GameMains_StreamLogic>
         //データ抽出
         string x =key[Caluma+"_"+EventName+UnityEngine.Random.Range(1,3).ToString()].ToString();
         
+        
+        //ログに格納しようかって思ったけど流石にやばそう。
+        //UserList[current_UserDataNum].Comment_Log_List.Add(x);
+
         //データ格納
-        UserList[current_UserDataNum].Comment_Log_List.Add(x);
         current_Comment = x;
         current_User = UserList[current_UserDataNum].UserName;
 
