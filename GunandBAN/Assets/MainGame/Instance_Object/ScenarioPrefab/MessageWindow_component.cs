@@ -5,12 +5,26 @@ using UnityEngine.UI;
 using TMPro;
 public class MessageWindow_component : MonoBehaviour
 {
+    /// <summary>
+    /// 選択肢のUI
+    /// </summary>
     public GameObject TrueFalse;
+
+    /// <summary>
+    /// True選択肢UI
+    /// </summary>
     public Button True;
     public TextMeshProUGUI truetext;
 
+    /// <summary>
+    /// False選択肢UI
+    /// </summary>
     public Button False;
     public TextMeshProUGUI falsetext;
+
+    /// <summary>
+    /// 表示文章。
+    /// </summary>
     public TextMeshProUGUI Message;
 
     /// <summary>
@@ -29,5 +43,10 @@ public class MessageWindow_component : MonoBehaviour
     public void TrueFalse_Off()
     {
         TrueFalse.SetActive(false);
+    }
+
+    public void MessageTextChange(string Message)
+    {
+
     }
 }

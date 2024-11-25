@@ -73,16 +73,17 @@ public class Comment_InstanceComponent : MonoBehaviour
     {
         GameMains_StreamLogic gameMains_StreamLogic = GameMains_StreamLogic.Instance();
 
-        #region 一人目
+        #region 1人目
 
         //外部から数値を取ってこないと、クリックした時の変数の値になってしまうのでバグってしまうので外部で一度格納する
         int num_a = gameMains_StreamLogic.current_UserDataNum;
         A = gameMains_StreamLogic.UserList[num_a].Id;
 
+        Debug.Log("テストAは"+num_a);
         //クリックした時、BANする
         button_one.onClick.AddListener(() =>
         {
-            gameMains_StreamLogic.OnBAN(num_a);
+            gameMains_StreamLogic.OnBAN(A);
             dispose?.Dispose();
             Remove();
         });
@@ -98,11 +99,13 @@ public class Comment_InstanceComponent : MonoBehaviour
 
         # region 2人目
         int num_b = gameMains_StreamLogic.current_UserDataNum;
-        B= gameMains_StreamLogic.UserList[num_b].Id;
+        Debug.Log("テストBは"+num_b);
+        B = gameMains_StreamLogic.UserList[num_b].Id;
+        
 
         button_two.onClick.AddListener(() =>
         {
-            gameMains_StreamLogic.OnBAN(num_b);
+            gameMains_StreamLogic.OnBAN(B);
             dispose?.Dispose();
             Remove();
         });
@@ -116,10 +119,11 @@ public class Comment_InstanceComponent : MonoBehaviour
         #region 3人目
         int num_c = gameMains_StreamLogic.current_UserDataNum;
         C=gameMains_StreamLogic.UserList[num_c].Id;
+        
 
         button_three.onClick.AddListener(() =>
         {
-            gameMains_StreamLogic.OnBAN(num_c);
+            gameMains_StreamLogic.OnBAN(C);
             dispose?.Dispose();
             Remove();
         });

@@ -149,20 +149,20 @@ public class GameMains_StreamLogic : Singleton<GameMains_StreamLogic>
     /// </summary>
     public void OnBAN(int num)
     {
-        //UserData user=(UserData)UserList.Where(userdata => userdata.Id == num);
-
         //BANの判定をする時は全てIDで探す
-
-
+        UserData user =(UserData)UserList.Where(userdata => userdata.Id == num);
+        Debug.Log(user);
+        int Ban_Num=UserList.FindIndex(_ => _ == user);
+        
 
         //BANの判定をONにする
-        UserList[num].BAN_onoff = true;
+        UserList[Ban_Num].BAN_onoff = true;
 
-        if (UserList[num].Caluma <= 50)
+        if (UserList[Ban_Num].Caluma <= 50)
         {
             badUser -= 1;
         }
-        else if (51 <= UserList[num].Caluma)
+        else if (51 <= UserList[Ban_Num].Caluma)
         {
             goodUser -= 1;
         }
@@ -189,14 +189,6 @@ public class GameMains_StreamLogic : Singleton<GameMains_StreamLogic>
     /// </summary>
     public void UserComment(string EventName)
     {
-        //最後になったら順番を0に戻す処理(BANしたものを全て削除）
-        if (UserList.Count <= current_UserDataNum)
-        {
-            current_UserDataNum = 0;
-            RemoveBAN();
-            Shuffle<UserData>(UserList);
-        }
-
         #region　善悪判定
         string Caluma = "Good";
         //50以下or51以上
@@ -225,6 +217,16 @@ public class GameMains_StreamLogic : Singleton<GameMains_StreamLogic>
         current_User = UserList[current_UserDataNum].UserName;
 
         current_UserDataNum ++;
+
+
+        //最後になったら順番を0に戻す処理(BANしたものを全て削除）
+        if (UserList.Count <= current_UserDataNum)
+        {
+            Debug.Log("タイミング確認");
+            current_UserDataNum = 0;
+            RemoveBAN();
+            Shuffle<UserData>(UserList);
+        }
     }
 
     /// <summary>

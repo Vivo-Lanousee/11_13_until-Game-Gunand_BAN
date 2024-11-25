@@ -39,7 +39,7 @@ public class EarlyTalkManager : MonoBehaviour
     IDisposable dispose;
 
     /// <summary>
-    /// 
+    /// 各種設定初期化
     /// </summary>
     private void Init()
     {
@@ -79,6 +79,8 @@ public class EarlyTalkManager : MonoBehaviour
         game.GameInit(5, 5, gameObject);
 
         Init();
+        
+        //ここで体力UI変更のオブザーバーを作成している。
         dispose = Observable.EveryUpdate().Subscribe(_ =>
         {
             HP -= Time.deltaTime;
