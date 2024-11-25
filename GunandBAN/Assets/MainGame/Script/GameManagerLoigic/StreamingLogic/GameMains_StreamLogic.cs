@@ -150,7 +150,7 @@ public class GameMains_StreamLogic : Singleton<GameMains_StreamLogic>
     public void OnBAN(int num)
     {
         //BAN‚Ì”»’è‚ð‚·‚éŽž‚Í‘S‚ÄID‚Å’T‚·
-        UserData user =(UserData)UserList.Where(userdata => userdata.Id == num);
+        UserData user = UserList.FirstOrDefault(userdata => userdata.Id == num);
         Debug.Log(user);
         int Ban_Num=UserList.FindIndex(_ => _ == user);
         

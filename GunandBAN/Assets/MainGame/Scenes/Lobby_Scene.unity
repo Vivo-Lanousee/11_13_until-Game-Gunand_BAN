@@ -208,10 +208,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharaTextFlame: {fileID: 828264682}
-  m_TextMeshPro: {fileID: 1408012648}
+  messageText: {fileID: 1408012648}
   TalkUI: {fileID: 987368166}
   A: {fileID: 1082242273}
   B: {fileID: 1978275220}
+  fadeDuration: 1
 --- !u!1 &210569958
 GameObject:
   m_ObjectHideFlags: 0
@@ -1111,7 +1112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1658,13 +1659,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 987368167}
+  - component: {fileID: 987368168}
   m_Layer: 5
   m_Name: TalkUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &987368167
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1686,6 +1688,14 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &987368168
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987368166}
+  m_CullTransparentMesh: 1
 --- !u!1 &1051226269
 GameObject:
   m_ObjectHideFlags: 0
@@ -2544,8 +2554,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 16777215
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
