@@ -15,6 +15,8 @@ public class EarlyTalkEvent_Event_one : ITalkEvent
         EarlyTalkManager.messageWindow.TextExChange("" +
             "Event_one_true(HP+10)",
             "Event_one_false");
+
+        EarlyTalkManager.messageWindow.MessageTextChange("あなたは旅に出ることにした。旅の前に家族や皆と挨拶していこうか？");
     }
     void ITalkEvent.TrueEnd()
     {

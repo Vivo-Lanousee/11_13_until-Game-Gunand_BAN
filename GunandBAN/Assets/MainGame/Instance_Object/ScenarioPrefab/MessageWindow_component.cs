@@ -45,8 +45,8 @@ public class MessageWindow_component : MonoBehaviour
         TrueFalse.SetActive(false);
     }
 
-    public void MessageTextChange(string Message)
+    public void MessageTextChange(string text)
     {
-
+        Message.text=text;
     }
 }
